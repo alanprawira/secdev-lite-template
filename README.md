@@ -7,9 +7,9 @@
 
 ## Паспорт студента
 
-- **ФИО:** TODO: PRAWIRA DENUNE GALANG
-- **Группа:** TODO: МСПИН241
-- **Контакт:** TODO: `dpravira@edu.hse.ru / `@alanprawira`
+- **ФИО:**: PRAWIRA DENUNE GALANG
+- **Группа:**: МСПИН241
+- **Контакт:**: `dpravira@edu.hse.ru / `@alanprawira`
 ---
 
 ## Что я сдаю (три артефакта)
