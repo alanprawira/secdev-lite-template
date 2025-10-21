@@ -35,7 +35,7 @@ pytest-cov==7.0.0
 7. Run tests.
 4. Check the resulting reports in the created folder EVIDENCE/S08.
 
-##2) Containerization (DV2)
+## 2) Containerization (DV2)
 
 - **Dockerfile:** [Dockerfile](https://github.com/alanprawira/secdev-seed-s06-s08/blob/main/Dockerfile) ./Dockerfile — python base image:3.11, non‑root appuser, variable DB_PATH=/home/appuser/data/app.db, healthcheck (TCP 8000), uvicorn app.main:app, minimal image
 - **Build/run locally:**
@@ -60,7 +60,7 @@ Features:
 - Unified security settings 
 - Tests reinstalls dependencies in a virtual environment
 
-  ##3) CI: Basic pipeline and stable run (DV3)
+## 3) CI: Basic pipeline and stable run (DV3)
 
 - **CI Platform:** GitHub Actions 
 - **CI config file:** 
@@ -123,7 +123,7 @@ Features:
 | Secrets Proof | `S08/secrets-proof.txt` | SECRET_KEY properly configured and validated |
 | Security Scan | `security-scan.txt` | No hardcoded secrets detected in codebase |
 
-##5) Secrets and environmental variables
+## 5) Secrets and environmental variables
 
 -Name: SECRET_KEY
 
