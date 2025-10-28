@@ -8,26 +8,28 @@
 
 ## 0) Мета
 
-- **Проект (опционально BYO):** TODO: ссылка / «учебный шаблон»
-- **Версия (commit/date):** TODO: abc123 / YYYY-MM-DD
-- **Кратко (1-2 предложения):** TODO: что сканируется и какие меры харднинга планируются
+- **Проект (опционально BYO):** TODO: secdev-seed-s09-s12
+- **Версия (commit/date):** TODO: abc123 / 2025-10-28
+- **Кратко (1-2 предложения):** TODO: security scanning of FastAPI application with container security
 
 ---
 
 ## 1) SBOM и уязвимости зависимостей (DS1)
 
-- **Инструмент/формат:** TODO: Syft/Grype/OSV; CycloneDX/SPDX
-- **Как запускал:**
+**Interface/formatting:** Syft/Grype; CycloneDX
+- **How did I launch it:**
 
-  ```bash
-  syft dir:. -o cyclonedx-json > EVIDENCE/sbom-YYYY-MM-DD.json
-  grype sbom:EVIDENCE/sbom-YYYY-MM-DD.json --fail-on high -o json > EVIDENCE/deps-YYYY-MM-DD.json
+  ``bash
+syft dir:. -o cyclonedx-json > EVIDENCE/S09/sbom.json
+enter the sbom password:/work/EVIDENCE/S09/sbom.json -o json > EVIDENCE/S09/sca_report.json
   ```
 
-- **Отчёты:** `EVIDENCE/sbom-YYYY-MM-DD.json`, `EVIDENCE/deps-YYYY-MM-DD.json`
-- **Выводы (кратко):** TODO: сколько Critical/High, ключевые пакеты/лицензии
-- **Действия:** TODO: что исправлено/обновлено **или** что временно подавлено (ниже в триаже)
-- **Гейт по зависимостям:** TODO: правило в словах (например, «Critical=0; High≤1»)
+- **S09 - SBOM and SCA**: generated SBOM (CycloneDX) filled with SCA. 
+- **Artekakty**: EVIDENCE/S09/sbom.json, EVIDENCE/S09/sca_report.json. 
+- **Link**: EVIDENCE/S09/sca_summary.md, EVIDENCE/S09/license_summary.md. 
+- **Link to resp**: [respository] (https://github.com/alanprawira/secdev-seed-s09-s12)
+-  **Link to action**: [workflow] (https://github.com/alanprawira/secdev-seed-s09-s12/actions)
+- Up to - 3 medium (sca_summary_old.md ), later - 0 (sca_summary.md )
 
 ---
 
@@ -35,75 +37,72 @@
 
 ### 2.1 SAST
 
-- **Инструмент/профиль:** TODO: semgrep?
-- **Как запускал:**
+- **Tool/Profile:** semgrep
+- **How did I launch it:**
 
   ```bash
-  semgrep --config p/ci --severity=high --error --json --output EVIDENCE/sast-YYYY-MM-DD.json
+  semgrep semgrep ci --config p/ci --sarif --output /src/EVIDENCE/S10/semgrep.sarif --metrics=off || true
   ```
 
-- **Отчёт:** `EVIDENCE/sast-YYYY-MM-DD.*`
-- **Выводы:** TODO: 1-2 ключевых находки (TP/FP), области риска
+- **Artifacts:** `EVIDENCE/S10/semgrep.sarif`
+- **Conclusions:** FP reviewed
+
+  ```
 
 ### 2.2 Secrets scanning
 
-- **Инструмент:** TODO: gitleaks?
-- **Как запускал:**
+- **Tool:** gitleaks
+- **How did I launch it:**
 
   ```bash
-  gitleaks detect --no-git --report-format json --report-path EVIDENCE/secrets-YYYY-MM-DD.json
-  gitleaks detect --log-opts="--all" --report-format json --report-path EVIDENCE/secrets-YYYY-MM-DD-history.json
+  gitleaks detect --source=/repo --report-format=json --report-path=/repo/EVIDENCE/S10/gitleaks.json || true
   ```
 
-- **Отчёт:** `EVIDENCE/secrets-YYYY-MM-DD.*`
-- **Выводы:** TODO: есть ли истинные срабатывания; меры (ревок/ротация/очистка истории)
+- **Artifacts:** `EVIDENCE/S10/gitleaks.json`
+- **Conclusion:** there are gitleaks threats, but fixed
+- **Link to unsuccessful** [fail] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651)
 
 ---
 
 ## 3) DAST **или** Policy (Container/IaC) (DS3)
 
-> Для «1» достаточно одного из классов; на «2» - желательно оба **или** один глубже (настроенный профиль/таргет).
+### DAST (lite)
 
-### Вариант A - DAST (лайт)
-
-- **Инструмент/таргет:** TODO (локальный стенд/демо-контейнер допустим)
-- **Как запускал:**
+- **Tool/Target:** zap
+- **How did I launch it:**
 
   ```bash
-  zap-baseline.py -t http://127.0.0.1:8080 -m 3 \
-    -r EVIDENCE/dast-YYYY-MM-DD.html -J EVIDENCE/dast-YYYY-MM-DD.json
+  zap-baseline.py -t http://localhost:8080 -r zap_baseline.html -J zap_baseline.json-d || true
   ```
 
-- **Отчёт:** `EVIDENCE/dast-YYYY-MM-DD.pdf#alert-...`
-- **Выводы:** TODO: 1-2 meaningful наблюдения
+- **Artifacts:** `EVIDENCE/S11/zap_baseline.html`, `EVIDENCE/S11/zap_baseline.json-d.json`
+- **Conclusions:** There are 2 medium risks and 3 low risks in this project.
+
 
 ### Вариант B - Policy / Container / IaC
 
-- **Инструмент(ы):** TODO (trivy config / checkov / conftest и т.п.)
-- **Как запускал:**
+### Policy / Container / IaC
+
+- **Tool(s):** trivy config / checkov 
+- **How did I launch it:**
 
   ```bash
-  trivy image --severity HIGH,CRITICAL --exit-code 1 <image:tag> > EVIDENCE/policy-YYYY-MM-DD.txt
-  trivy config . --severity HIGH,CRITICAL --exit-code 1 --format table > EVIDENCE/trivy-YYYY-MM-DD.txt
-  checkov -d . -o cli > EVIDENCE/checkov-YYYY-MM-DD.txt
+  trivy image --format json --output /work/EVIDENCE/S12/trivy.json --ignore-unfixed s09s12-app:ci || true
+  checkov -d /src/iac -o json > EVIDENCE/S12/checkov.json || true
   ```
 
-- **Отчёт(ы):** `EVIDENCE/policy-YYYY-MM-DD.txt`, `EVIDENCE/trivy-YYYY-MM-DD.txt`, …
-- **Выводы:** TODO: какие правила нарушены/исправлены
-
+- **Artifacts:** `EVIDENCE/S12/trivy.json`, `EVIDENCE/S12/checkov.json`
+- Before - 17 warnings (checkov-old.json), after - 15 (checkov.json)
 ---
 
 ## 4) Харднинг (доказуемый) (DS4)
 
 Отметьте **реально применённые** меры, приложите доказательства из `EVIDENCE/`.
 
-- [ ] **Контейнер non-root / drop capabilities** → Evidence: `EVIDENCE/policy-YYYY-MM-DD.txt#no-root`
-- [ ] **Rate-limit / timeouts / retry budget** → Evidence: `EVIDENCE/load-after.png`
-- [ ] **Input validation** (типы/длины/allowlist) → Evidence: `EVIDENCE/sast-YYYY-MM-DD.*#input`
-- [ ] **Secrets handling** (нет секретов в git; хранилище секретов) → Evidence: `EVIDENCE/secrets-YYYY-MM-DD.*`
-- [ ] **HTTP security headers / CSP / HTTPS-only** → Evidence: `EVIDENCE/security-headers.txt`
-- [ ] **AuthZ / RLS / tenant isolation** → Evidence: `EVIDENCE/rls-policy.txt`
-- [ ] **Container/IaC best-practice** (минимальная база, readonly fs, …) → Evidence: `EVIDENCE/trivy-YYYY-MM-DD.txt#cfg`
+- [x] **Контейнер non-root / drop capabilities** → Evidence: `EVIDENCE/S12/non-root.txt`
+- [x] **HEALTHCHECK** → Evidence: `EVIDENCE/S12/health.json`
+- [x] **Отказ от latest** -> Evidence: `EVIDENCE/S12/checkov.json`
+- [x] **K8s non-root** -> Evidence: `EVIDENCE/S12/checkov.json`
 
 > Для «1» достаточно ≥2 уместных мер с доказательствами; для «2» - ≥3 и хотя бы по одной показать эффект «до/после».
 
@@ -111,18 +110,19 @@
 
 ## 5) Quality-gates и проверка порогов (DS5)
 
-- **Пороговые правила (словами):**  
-  Примеры: «SCA: Critical=0; High≤1», «SAST: Critical=0», «Secrets: 0 истинных находок», «Policy: Violations=0».
-- **Как проверяются:**  
-  - Ручной просмотр (какие файлы/строки) **или**  
-  - Автоматически:  (скрипт/job, условие fail при нарушении)
+- **Threshold rules (in words):**
+SCA: Critical=0; High≤1, "SAST: Critical=0", "Secrets: 0 true findings", "Policy: Violations=0".
+- **How are they checked:**
+- Automatically: (script/job, fail condition in case of violation)
 
     ```bash
-    SCA: grype ... --fail-on high
-    SAST: semgrep --config p/ci --severity=high --error
-    Secrets: gitleaks detect --exit-code 1
-    Policy/IaC: trivy (image|config) --severity HIGH,CRITICAL --exit-code 1
-    DAST: zap-baseline.py -m 3 (фейл при High)
+    SCA: grype sbom:/work/EVIDENCE/S09/sbom.json -o json > EVIDENCE/S09/sca_report.json --fail-on high
+    SAST: semgrep scan --config "p/ci" --sarif --output /src/EVIDENCE/S10/semgrep.sarif --metrics=off --error --severity=ERROR 
+    Secrets: gitleaks detect --source=/repo --report-format=json --report-path=/repo/EVIDENCE/S10/gitleaks.json --exit-code 1
+    Policy/IaC: trivy image --format json --output /work/EVIDENCE/S12/trivy.json --ignore-unfixed s09s12-app:ci --severity HIGH,CRITICAL --exit-code 1
+    DAST: zap-baseline.py -m 3 (fail at High)
+``
+
     ```
 
 - **Ссылки на конфиг/скрипт (если есть):**
@@ -136,11 +136,13 @@
 
 ## 6) Триаж-лог (fixed / suppressed / open)
 
-| ID/Anchor       | Класс     | Severity | Статус     | Действие | Evidence                               | Ссылка на фикс/исключение         | Комментарий / owner / expiry |
+| ID/Binding | Class | Severity | Status | Action | Evidence | Website link/Indication | Comment / owner / expiration date |
 |-----------------|-----------|----------|------------|----------|----------------------------------------|-----------------------------------|------------------------------|
-| CVE-2024-XXXX   | SCA       | High     | fixed      | bump     | `EVIDENCE/deps-YYYY-MM-DD.json#CVE`    | `commit abc123`                   | -                            |
-| ZAP-123         | DAST      | Medium   | suppressed | ignore   | `EVIDENCE/dast-YYYY-MM-DD.pdf#123`     | `EVIDENCE/suppressions.yml#zap`   | FP; owner: ФИО; expiry: 2025-12-31 |
-| SAST-77         | SAST      | High     | open       | backlog  | `EVIDENCE/sast-YYYY-MM-DD.*#77`        | issue-link                        | план фикса в релизе N        |
+| CVE (FULL text )-2024-56201 | SCA | High |fixed| crash | `EVIDENCE/S09/sca_report_old.json` | `commit 7f96af78f282dfa14f78474db77a161b63b2b069` | Sandbox breakout |
+| CVE (FULL text )-2024-56326 | SCA | Average |fixed | failure | `EVIDENCE/S09/sca_report_old.json` | `commit 7f96af78f282dfa14f78474db77a161b63b2b069` | - |
+| CVE (FULL text )-2025-27516 | SCA | Average/High |fixed| crash | `EVIDENCE/S09/sca_report_old.json` | `commit 7f96af78f282dfa14f78474db77a161b63b2b069` | - |
+| stripe-access token | Gitleaks | High | open | backlog | `EVIDENCE/S10/gitleaks-old.json` | [link] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651) | Critical; owner: Alanprawira; expiration date: 2025-10-28 |
+---
 
 > Для «2» по DS5 обязательно указывать **owner/expiry/обоснование** для подавлений.
 
