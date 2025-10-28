@@ -10,15 +10,15 @@
   "Secret": "sk_test_1234567890SECRET",
   "File": "app/main.py",
   "SymlinkFile": "",
-  "Commit": "370d6bbc9834996349275915155f19194a104f9a",
-  "Link": "https://github.com/alanprawira/secdev-seed-s09-s12/blob/370d6bbc9834996349275915155f19194a104f9a/app/main.py#L9",
+  "Commit": "a277f2d1e4fa64375a8c4d376f333e0e60522c87",
+  "Link": "https://github.com/alanprawira/secdev-seed-s09-s12/blob/a277f2d1e4fa64375a8c4d376f333e0e60522c87/app/main.py#L9",
   "Entropy": 4.2516294,
   "Author": "ALN",
   "Email": "119984311+alanprawira@users.noreply.github.com",
-  "Date": "2025-10-28T15:24:54Z",
-  "Message": "Update ci-s10-sast-secrets.yml",
+  "Date": "2025-10-28T16:18:35Z",
+  "Message": "testing",
   "Tags": [],
-  "Fingerprint": "370d6bbc9834996349275915155f19194a104f9a:app/main.py:stripe-access-token:9"
+  "Fingerprint": "a277f2d1e4fa64375a8c4d376f333e0e60522c87:app/main.py:stripe-access-token:9"
  },
  {
   "RuleID": "generic-api-key",
@@ -31,15 +31,15 @@
   "Secret": "A035C8C19219BA821ECEA86B64E628F8D684696D",
   "File": "EVIDENCE/S12/trivy.json",
   "SymlinkFile": "",
-  "Commit": "370d6bbc9834996349275915155f19194a104f9a",
-  "Link": "https://github.com/alanprawira/secdev-seed-s09-s12/blob/370d6bbc9834996349275915155f19194a104f9a/EVIDENCE/S12/trivy.json#L55",
+  "Commit": "a277f2d1e4fa64375a8c4d376f333e0e60522c87",
+  "Link": "https://github.com/alanprawira/secdev-seed-s09-s12/blob/a277f2d1e4fa64375a8c4d376f333e0e60522c87/EVIDENCE/S12/trivy.json#L55",
   "Entropy": 3.6832063,
   "Author": "ALN",
   "Email": "119984311+alanprawira@users.noreply.github.com",
-  "Date": "2025-10-28T15:24:54Z",
-  "Message": "Update ci-s10-sast-secrets.yml",
+  "Date": "2025-10-28T16:18:35Z",
+  "Message": "testing",
   "Tags": [],
-  "Fingerprint": "370d6bbc9834996349275915155f19194a104f9a:EVIDENCE/S12/trivy.json:generic-api-key:55"
+  "Fingerprint": "a277f2d1e4fa64375a8c4d376f333e0e60522c87:EVIDENCE/S12/trivy.json:generic-api-key:55"
  },
  {
   "RuleID": "generic-api-key",
@@ -52,14 +52,14 @@
   "Secret": "A035C8C19219BA821ECEA86B64E628F8D684696D",
   "File": "EVIDENCE/S12/trivy.json",
   "SymlinkFile": "",
-  "Commit": "370d6bbc9834996349275915155f19194a104f9a",
-  "Link": "https://github.com/alanprawira/secdev-seed-s09-s12/blob/370d6bbc9834996349275915155f19194a104f9a/EVIDENCE/S12/trivy.json#L180",
+  "Commit": "a277f2d1e4fa64375a8c4d376f333e0e60522c87",
+  "Link": "https://github.com/alanprawira/secdev-seed-s09-s12/blob/a277f2d1e4fa64375a8c4d376f333e0e60522c87/EVIDENCE/S12/trivy.json#L180",
   "Entropy": 3.6832063,
   "Author": "ALN",
   "Email": "119984311+alanprawira@users.noreply.github.com",
-  "Date": "2025-10-28T15:24:54Z",
-  "Message": "Update ci-s10-sast-secrets.yml",
+  "Date": "2025-10-28T16:18:35Z",
+  "Message": "testing",
   "Tags": [],
-  "Fingerprint": "370d6bbc9834996349275915155f19194a104f9a:EVIDENCE/S12/trivy.json:generic-api-key:180"
+  "Fingerprint": "a277f2d1e4fa64375a8c4d376f333e0e60522c87:EVIDENCE/S12/trivy.json:generic-api-key:180"
  }
 ]

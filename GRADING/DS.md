@@ -60,7 +60,7 @@ enter the sbom password:/work/EVIDENCE/S09/sbom.json -o json > EVIDENCE/S09/sca_
 
 - **Artifacts:** `EVIDENCE/S10/gitleaks.json`
 - **Conclusion:** there are gitleaks threats, but fixed
-- **Link to unsuccessful** [fail] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651)
+- **Link to unsuccessful** [fail] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18881658908)
 
 ---
 
@@ -138,24 +138,22 @@ SCA: Critical=0; High≤1, "SAST: Critical=0", "Secrets: 0 true findings", "Poli
 
 | ID/Binding | Class | Severity | Status | Action | Evidence | Website link/Indication | Comment / owner / expiration date |
 |-----------------|-----------|----------|------------|----------|----------------------------------------|-----------------------------------|------------------------------|
-| CVE (FULL text )-2024-56201 | SCA | High |fixed| crash | `EVIDENCE/S09/sca_report_old.json` | `commit 7f96af78f282dfa14f78474db77a161b63b2b069` | Sandbox breakout |
-| CVE (FULL text )-2024-56326 | SCA | Average |fixed | failure | `EVIDENCE/S09/sca_report_old.json` | `commit 7f96af78f282dfa14f78474db77a161b63b2b069` | - |
-| CVE (FULL text )-2025-27516 | SCA | Average/High |fixed| crash | `EVIDENCE/S09/sca_report_old.json` | `commit 7f96af78f282dfa14f78474db77a161b63b2b069` | - |
-| stripe-access token | Gitleaks | High | open | backlog | `EVIDENCE/S10/gitleaks-old.json` | [link] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651) | Critical; owner: Alanprawira; expiration date: 2025-10-28 |
+| CVE (FULL text )-2024-56201 | SCA | High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/deps-YYYY-MM-DD.json#CVE` | Sandbox breakout |
+| CVE (FULL text )-2024-56326 | SCA | Average |fixed | failure | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/dast-YYYY-MM-DD.pdf#123` | - |
+| CVE (FULL text )-2025-27516 | SCA | Average/High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/sast-YYYY-MM-DD.*#77` | - |
+| stripe-access token | Gitleaks | High | open | backlog | `EVIDENCE/S10/old/gitleaks.json` | [link] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651) | Critical; owner: Alanprawira; expiration date: 2025-10-28 |
 ---
 
 > Для «2» по DS5 обязательно указывать **owner/expiry/обоснование** для подавлений.
 
 ---
 
-## 7) Эффект «до/после» (метрики) (DS4/DS5)
+##7) Text "before/after" (metrics) (DS4/DS5)
 
-| Контроль/Мера | Метрика                 | До   | После | Evidence (до), (после)                          |
+|Control/Measure | Yandex.Metrica | Before | After | Proof (before), (after) |
 |---------------|-------------------------|-----:|------:|-------------------------------------------------|
-| Зависимости   | #Critical / #High (SCA) | TODO | 0 / ≤1| `EVIDENCE/deps-before.json`, `deps-after.json`  |
-| SAST          | #Critical / #High       | TODO | 0 / ≤1| `EVIDENCE/sast-before.*`, `sast-after.*`        |
-| Secrets       | Истинные находки        | TODO | 0     | `EVIDENCE/secrets-*.json`                       |
-| Policy/IaC    | Violations              | TODO | 0     | `EVIDENCE/checkov-before.txt`, `checkov-after.txt` |
+| Politics/MAC | Recognition | 17 | 15 | `EVIDENCE/S12/old/checkov.txt `, `EVIDENCE/S12/checkov.txt ` |
+| Network users | The average flow | 3 | 0 | `EVIDENCE/S09/old/sca_summary.md`, `EVIDENCE/S09/sca_summary.md' |
 
 ---
 
@@ -168,16 +166,17 @@ SCA: Critical=0; High≤1, "SAST: Critical=0", "Secrets: 0 true findings", "Poli
 
 ## 9) Out-of-Scope
 
-- TODO: что сознательно не сканировалось сейчас и почему (1-3 пункта)
+- TODO: - **Production Infrastructure**: Only local Docker containers were scanned, not production cloud infrastructure (AWS/Azure/GCP)
+- **Third-party APIs**: External service integrations and API endpoints were not included in DAST scanning  
+- **Mobile/Client-side**: Security focus was on backend API only, not frontend/mobile applications
+- **Performance/Load Testing**: Security scanning focused on vulnerabilities, not performance under load
 
 ---
 
-## 10) Самооценка по рубрике DS (0/1/2)
+- **DS1. SBOM and SCA:** [ ] 0 [ ] 1 [x] 2  
+- **DS2. SAST + Secrets:** [ ] 0 [ ] 1 [x] 2  
+- **DS3. DAST or Policy (Container/IaC):** [ ] 0 [ ] 1 [x] 2  
+- **DS4. Mining (provable):** [ ] 0 [ ] 1 [x] 2  
+- **DS5. Quality-gates, triage and "before/after":** [ ] 0 [ ] 1 [x] 2  
 
-- **DS1. SBOM и SCA:** [ ] 0 [ ] 1 [ ] 2  
-- **DS2. SAST + Secrets:** [ ] 0 [ ] 1 [ ] 2  
-- **DS3. DAST или Policy (Container/IaC):** [ ] 0 [ ] 1 [ ] 2  
-- **DS4. Харднинг (доказуемый):** [ ] 0 [ ] 1 [ ] 2  
-- **DS5. Quality-gates, триаж и «до/после»:** [ ] 0 [ ] 1 [ ] 2  
-
-**Итог DS (сумма):** __/10
+**Total DS (sum):** 10/10
