@@ -61,7 +61,7 @@ enter the sbom password:/work/EVIDENCE/S09/sbom.json -o json > EVIDENCE/S09/sca_
 - **Artifacts:** `EVIDENCE/S10/gitleaks.json`
 - **Conclusion:** there are gitleaks threats, but fixed
 - **Link to unsuccessful** [fail](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18881658908)
-
+- **Link to successful** [success](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18877809867)
 ---
 
 ## 3) DAST **или** Policy (Container/IaC) (DS3)
