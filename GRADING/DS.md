@@ -27,8 +27,8 @@ enter the sbom password:/work/EVIDENCE/S09/sbom.json -o json > EVIDENCE/S09/sca_
 - **S09 - SBOM and SCA**: generated SBOM (CycloneDX) filled with SCA. 
 - **Artekakty**: EVIDENCE/S09/sbom.json, EVIDENCE/S09/sca_report.json. 
 - **Link**: EVIDENCE/S09/sca_summary.md, EVIDENCE/S09/license_summary.md. 
-- **Link to resp**: [respository] (https://github.com/alanprawira/secdev-seed-s09-s12)
--  **Link to action**: [workflow] (https://github.com/alanprawira/secdev-seed-s09-s12/actions)
+- **Link to resp**: [respository](https://github.com/alanprawira/secdev-seed-s09-s12)
+-  **Link to action**: [workflow](https://github.com/alanprawira/secdev-seed-s09-s12/actions)
 - Up to - 3 medium (sca_summary_old.md ), later - 0 (sca_summary.md )
 
 ---
@@ -60,7 +60,7 @@ enter the sbom password:/work/EVIDENCE/S09/sbom.json -o json > EVIDENCE/S09/sca_
 
 - **Artifacts:** `EVIDENCE/S10/gitleaks.json`
 - **Conclusion:** there are gitleaks threats, but fixed
-- **Link to unsuccessful** [fail] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18881658908)
+- **Link to unsuccessful** [fail](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18881658908)
 
 ---
 
@@ -141,7 +141,7 @@ SCA: Critical=0; High≤1, "SAST: Critical=0", "Secrets: 0 true findings", "Poli
 | CVE (FULL text )-2024-56201 | SCA | High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/deps-YYYY-MM-DD.json#CVE` | Sandbox breakout |
 | CVE (FULL text )-2024-56326 | SCA | Average |fixed | failure | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/dast-YYYY-MM-DD.pdf#123` | - |
 | CVE (FULL text )-2025-27516 | SCA | Average/High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/sast-YYYY-MM-DD.*#77` | - |
-| stripe-access token | Gitleaks | High | open | backlog | `EVIDENCE/S10/old/gitleaks.json` | [link] (https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651) | Critical; owner: Alanprawira; expiration date: 2025-10-28 |
+| stripe-access token | Gitleaks | High | open | backlog | `EVIDENCE/S10/old/gitleaks.json` | [link](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651) | Critical; owner: Alanprawira; expiration date: 2025-10-28 |
 ---
 
 > Для «2» по DS5 обязательно указывать **owner/expiry/обоснование** для подавлений.
