@@ -138,10 +138,10 @@ SCA: Critical=0; High≤1, "SAST: Critical=0", "Secrets: 0 true findings", "Poli
 
 | ID/Binding | Class | Severity | Status | Action | Evidence | Website link/Indication | Comment / owner / expiration date |
 |-----------------|-----------|----------|------------|----------|----------------------------------------|-----------------------------------|------------------------------|
-| CVE (FULL text )-2024-56201 | SCA | High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/deps-YYYY-MM-DD.json#CVE` | Sandbox breakout |
-| CVE (FULL text )-2024-56326 | SCA | Average |fixed | failure | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/dast-YYYY-MM-DD.pdf#123` | - |
-| CVE (FULL text )-2025-27516 | SCA | Average/High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | `EVIDENCE/sast-YYYY-MM-DD.*#77` | - |
-| stripe-access token | Gitleaks | High | open | backlog | `EVIDENCE/S10/old/gitleaks.json` | [link](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18880010884/job/53880167651) | Critical; owner: Alanprawira; expiration date: 2025-10-28 |
+| CVE (FULL text )-2024-56201 | SCA | High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | [link](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18877800736) | Sandbox breakout |
+| CVE (FULL text )-2024-56326 | SCA | Average |fixed | failure | `EVIDENCE/S09/old/sca_report.json` | [link](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18877800736) | - |
+| CVE (FULL text )-2025-27516 | SCA | Average/High |fixed| crash | `EVIDENCE/S09/old/sca_report.json` | [link](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18877800736) | - |
+| stripe-access token | Gitleaks | High | open | backlog | `EVIDENCE/S10/old/gitleaks.json` | [link](https://github.com/alanprawira/secdev-seed-s09-s12/actions/runs/18881658908) | Critical; owner: Alanprawira; expiration date: 2025-10-28 |
 ---
 
 > Для «2» по DS5 обязательно указывать **owner/expiry/обоснование** для подавлений.
